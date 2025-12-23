@@ -7,25 +7,22 @@ import com.tennis.core.Deuce;
 import com.tennis.core.GameReceiver;
 import com.tennis.core.GameServer;
 import com.tennis.core.TennisResult;
+import com.tennis.model.Player;
+import com.tennis.util.TennisGameCommonUtil;
 
 public class TennisGame4 implements TennisGame {
 
-    public int serverScore;
-    public int receiverScore;
-    public String server;
-    public String receiver;
+    private final Player server;
+    private final Player receiver;
 
-    public TennisGame4(String player1, String player2) {
-        this.server = player1;
-        this.receiver = player2;
+    public TennisGame4(String player1Name, String player2Name) {
+        this.server = new Player(player1Name, 0);
+        this.receiver = new Player(player2Name, 0);
     }
 
     @Override
     public void wonPoint(String playerName) {
-        if (server.equals(playerName))
-            this.serverScore += 1;
-        else
-            this.receiverScore += 1;
+        TennisGameCommonUtil.wonPoint(playerName, server, receiver);
     }
 
     @Override
@@ -40,23 +37,31 @@ public class TennisGame4 implements TennisGame {
     }
 
     public boolean receiverHasAdvantage() {
-        return receiverScore >= 4 && (receiverScore - serverScore) == 1;
+        return receiver.getScore() >= 4 && (receiver.getScore() - server.getScore()) == 1;
     }
 
     public boolean serverHasAdvantage() {
-        return serverScore >= 4 && (serverScore - receiverScore) == 1;
+        return server.getScore() >= 4 && (server.getScore() - receiver.getScore()) == 1;
     }
 
     public boolean receiverHasWon() {
-        return receiverScore >= 4 && (receiverScore - serverScore) >= 2;
+        return receiver.getScore() >= 4 && (receiver.getScore() - server.getScore()) >= 2;
     }
 
     public boolean serverHasWon() {
-        return serverScore >= 4 && (serverScore - receiverScore) >= 2;
+        return server.getScore() >= 4 && (server.getScore() - receiver.getScore()) >= 2;
     }
 
     public boolean isDeuce() {
-        return serverScore >= 3 && receiverScore >= 3 && (serverScore == receiverScore);
+        return server.getScore() >= 3 && receiver.getScore() >= 3 && (server.getScore().equals(receiver.getScore()));
+    }
+
+    public Player getServer() {
+        return server;
+    }
+
+    public Player getReceiver() {
+        return receiver;
     }
 }
 

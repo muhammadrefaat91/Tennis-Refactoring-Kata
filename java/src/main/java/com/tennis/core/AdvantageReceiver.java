@@ -17,7 +17,7 @@ public class AdvantageReceiver implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.receiverHasAdvantage())
-            return new TennisResult(ADVANTAGE_STRING + game.receiver, "");
+            return new TennisResult(ADVANTAGE_STRING + game.getReceiver().getName(), "");
         return this.nextResult.getResult();
     }
 }

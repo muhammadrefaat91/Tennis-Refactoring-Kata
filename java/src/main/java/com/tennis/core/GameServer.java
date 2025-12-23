@@ -16,7 +16,7 @@ public class GameServer implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.serverHasWon())
-            return new TennisResult(WIN_FOR + game.server, "");
+            return new TennisResult(WIN_FOR + game.getServer().getName(), "");
         return this.nextResult.getResult();
     }
 

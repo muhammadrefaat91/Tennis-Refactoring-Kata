@@ -16,7 +16,7 @@ public class AdvantageServer implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.serverHasAdvantage())
-            return new TennisResult(ADVANTAGE_STRING + game.server, "");
+            return new TennisResult(ADVANTAGE_STRING + game.getServer().getName(), "");
         return this.nextResult.getResult();
     }
 }

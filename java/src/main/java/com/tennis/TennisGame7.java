@@ -1,85 +1,36 @@
 package com.tennis;
 
-import static com.tennis.util.Constants.ADVANTAGE_STRING;
 import static com.tennis.util.Constants.CURRENT_SCORE;
-import static com.tennis.util.Constants.DASH;
-import static com.tennis.util.Constants.DEUCE;
 import static com.tennis.util.Constants.ENJOY_YOUR_GAME;
-import static com.tennis.util.Constants.FIFTEEN;
-import static com.tennis.util.Constants.FIFTEEN_ALL;
-import static com.tennis.util.Constants.FORTY;
-import static com.tennis.util.Constants.LOVE;
-import static com.tennis.util.Constants.LOVE_ALL;
-import static com.tennis.util.Constants.PLAYER_1;
-import static com.tennis.util.Constants.THIRTY;
-import static com.tennis.util.Constants.THIRTY_ALL;
-import static com.tennis.util.Constants.WIN_FOR;
+import static com.tennis.util.TennisGameCommonUtil.getEndGameScore;
+import static com.tennis.util.TennisGameCommonUtil.getRegularScore;
+import static com.tennis.util.TennisGameCommonUtil.getTieScore;
+import com.tennis.model.Player;
+import com.tennis.util.TennisGameCommonUtil;
 
 public class TennisGame7 implements TennisGame {
 
-    private final String player1Name;
-    private final String player2Name;
-    private int player1Score;
-    private int player2Score;
+    private Player player1;
+    private Player player2;
 
     public TennisGame7(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+        this.player1 = new Player(player1Name, 0);
+        this.player2 = new Player(player2Name, 0);
     }
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_1)) {
-            player1Score++;
-        } else {
-            player2Score++;
-        }
+        TennisGameCommonUtil.wonPoint(playerName, player1, player2);
     }
 
     public String getScore() {
         String result = CURRENT_SCORE;
-        if (player1Score == player2Score) {
-            // tie score
-            switch (player1Score) {
-                case 0:
-                    result += LOVE_ALL;
-                    break;
-                case 1:
-                    result += FIFTEEN_ALL;
-                    break;
-                case 2:
-                    result += THIRTY_ALL;
-                    break;
-                default:
-                    result += DEUCE;
-                    break;
-            }
-        } else if (player1Score >= 4 || player2Score >= 4) {
-            // end-game score
-            if (player1Score - player2Score == 1) {
-                result += ADVANTAGE_STRING + player1Name;
-            } else if (player1Score - player2Score == -1) {
-                result += ADVANTAGE_STRING + player2Name;
-            } else if (player1Score - player2Score >= 2) {
-                result += WIN_FOR + player1Name;
-            } else {
-                result += WIN_FOR + player2Name;
-            }
+        if (player1.getScore().equals(player2.getScore())) {
+            result+= getTieScore(player1.getScore());
+        } else if (player1.getScore() >= 4 || player2.getScore() >= 4) {
+            result+= getEndGameScore(player1.getScore(), player2.getScore(), player1.getName(), player2.getName());
         } else {
-            // regular score
-            result +=  switch (player1Score) {
-                case 0 -> LOVE;
-                case 1 -> FIFTEEN;
-                case 2 -> THIRTY;
-                default -> FORTY;
-            };
-            result += DASH;
-            result +=  switch (player2Score) {
-                case 0 -> LOVE;
-                case 1 -> FIFTEEN;
-                case 2 -> THIRTY;
-                default -> FORTY;
-            };
+            result +=  getRegularScore(player1.getScore(), player2.getScore());
         }
         return result + ENJOY_YOUR_GAME;
     }

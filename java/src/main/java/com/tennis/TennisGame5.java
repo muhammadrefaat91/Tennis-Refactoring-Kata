@@ -10,7 +10,6 @@ import static com.tennis.util.Constants.FIFTEEN_THIRTY;
 import static com.tennis.util.Constants.FORTY_FIFTEEN;
 import static com.tennis.util.Constants.FORTY_LOVE;
 import static com.tennis.util.Constants.FORTY_THIRTY;
-import static com.tennis.util.Constants.INVALID_PLAYER_NAME;
 import static com.tennis.util.Constants.INVALID_SCORE;
 import static com.tennis.util.Constants.LOVE_ALL;
 import static com.tennis.util.Constants.LOVE_FIFTEEN;
@@ -26,42 +25,16 @@ import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.tennis.model.Player;
+import com.tennis.util.TennisGameCommonUtil;
+
 public class TennisGame5 implements TennisGame {
 
-    private final String player1Name;
-    private final String player2Name;
-    private int player1Score;
-    private int player2Score;
+    static Map<Map.Entry, String> lookup = new HashMap<Map.Entry, String>();
+    private Player player1;
+    private Player player2;
 
-    public TennisGame5(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
-    }
-
-    @Override
-    public void wonPoint(String playerName) {
-        if (!playerName.equals(player1Name) && !playerName.equals(player2Name)) {
-            throw new IllegalArgumentException(INVALID_PLAYER_NAME);
-        }
-
-        if (playerName.equals(player1Name)) {
-            player1Score++;
-        } else if (playerName.equals(player2Name)) {
-            player2Score++;
-        }
-    }
-
-    @Override
-    public String getScore() {
-        int p1 = player1Score;
-        int p2 = player2Score;
-
-        while (p1 > 4 || p2 > 4) {
-            p1--;
-            p2--;
-        }
-
-        var lookup = new HashMap<Map.Entry, String>();
+    static {
         lookup.put(Map.entry(0, 0), LOVE_ALL);
         lookup.put(Map.entry(0, 1), LOVE_FIFTEEN);
         lookup.put(Map.entry(0, 2), LOVE_THIRTY);
@@ -87,8 +60,25 @@ public class TennisGame5 implements TennisGame {
         lookup.put(Map.entry(4, 2), WIN_FOR_PLAYER_1);
         lookup.put(Map.entry(4, 3), ADVANTAGE_PLAYER_1);
         lookup.put(Map.entry(4, 4), DEUCE);
+    }
 
-        var entry = Map.entry(p1, p2);
+    public TennisGame5(String player1Name, String player2Name) {
+        this.player1 = new Player(player1Name, 0);
+        this.player2 = new Player(player2Name, 0);
+    }
+
+    @Override
+    public void wonPoint(String playerName) {
+        TennisGameCommonUtil.wonPoint(playerName, player1, player2);
+    }
+
+    @Override
+    public String getScore() {
+        while (player1.getScore() > 4 || player2.getScore() > 4) {
+            player1.setScore(player1.getScore() - 1);
+            player2.setScore(player2.getScore() - 1);
+        }
+        var entry = Map.entry(player1.getScore(), player2.getScore());
         if (lookup.containsKey(entry)) {
             return lookup.get(entry);
         } else {
