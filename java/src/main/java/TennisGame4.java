@@ -1,7 +1,8 @@
-import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.ADVANTAGE_STRING;
 import static com.tennis.util.Constants.DASH;
 import static com.tennis.util.Constants.DASH_ALL;
 import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.EMPTY_STRING;
 import static com.tennis.util.Constants.FIFTEEN;
 import static com.tennis.util.Constants.FORTY;
 import static com.tennis.util.Constants.LOVE;
@@ -70,7 +71,7 @@ class TennisResult {
     }
 
     String format() {
-        if ("".equals(this.receiverScore))
+        if (EMPTY_STRING.equals(this.receiverScore))
             return this.serverScore;
         if (serverScore.equals(receiverScore))
             return serverScore + DASH_ALL;
@@ -145,7 +146,7 @@ class AdvantageServer implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.serverHasAdvantage())
-            return new TennisResult(ADVANTAGE + game.server, "");
+            return new TennisResult(ADVANTAGE_STRING + game.server, "");
         return this.nextResult.getResult();
     }
 }
@@ -163,7 +164,7 @@ class AdvantageReceiver implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.receiverHasAdvantage())
-            return new TennisResult(ADVANTAGE + game.receiver, "");
+            return new TennisResult(ADVANTAGE_STRING + game.receiver, "");
         return this.nextResult.getResult();
     }
 }

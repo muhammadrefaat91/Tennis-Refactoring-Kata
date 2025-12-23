@@ -1,4 +1,4 @@
-import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.ADVANTAGE_STRING;
 import static com.tennis.util.Constants.DASH;
 import static com.tennis.util.Constants.DEUCE;
 import static com.tennis.util.Constants.FIFTEEN;
@@ -24,82 +24,51 @@ public class TennisGame6 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_1))
+        if (playerName.equals(PLAYER_1)) {
             player1Score++;
-        else
+        } else {
             player2Score++;
-
+        }
     }
 
-    public String getScore()
-    {
+    public String getScore() {
         String result;
-
-        if (player1Score == player2Score)
-        {
+        if (player1Score == player2Score) {
             // tie score
-            String tieScore;
-            switch (player1Score)
-            {
-                case 0:
-                    tieScore = LOVE_ALL;
-                    break;
-                case 1:
-                    tieScore = FIFTEEN_ALL;
-                    break;
-                case 2:
-                    tieScore = THIRTY_ALL;
-                    break;
-                default:
-                    tieScore = DEUCE;
-                    break;
-            }
-
-            result = tieScore;
-        }
-        else if (player1Score >= 4 || player2Score >= 4)
-        {
+            result = switch (player1Score) {
+                case 0 -> LOVE_ALL;
+                case 1 -> FIFTEEN_ALL;
+                case 2 -> THIRTY_ALL;
+                default -> DEUCE;
+            };
+        } else if (player1Score >= 4 || player2Score >= 4) {
             // end-game score
-            String endGameScore;
-
             if (player1Score - player2Score == 1) {
-                endGameScore = ADVANTAGE + player1Name;
+                result = ADVANTAGE_STRING + player1Name;
             } else if (player1Score - player2Score == -1) {
-                endGameScore = ADVANTAGE + player2Name;
+                result = ADVANTAGE_STRING + player2Name;
             } else if (player1Score - player2Score >= 2) {
-                endGameScore = WIN_FOR + player1Name;
+                result = WIN_FOR + player1Name;
             } else {
-                endGameScore = WIN_FOR + player2Name;
+                result = WIN_FOR + player2Name;
             }
-
-            result = endGameScore;
-        }
-        else
-        {
+        } else {
             // regular score
-            String regularScore;
-
-            String score1 =  switch (player1Score)
-            {
+            String score1 =  switch (player1Score) {
                 case 0 -> LOVE;
                 case 1 -> FIFTEEN;
                 case 2 -> THIRTY;
                 default -> FORTY;
             };
 
-            var score2 =  switch (player2Score)
-            {
+            var score2 =  switch (player2Score) {
                 case 0 -> LOVE;
                 case 1 -> FIFTEEN;
                 case 2 -> THIRTY;
                 default -> FORTY;
             };
-
-            regularScore = score1 + DASH + score2;
-
-            result = regularScore;
+            result = score1 + DASH + score2;
         }
-
         return result;
     }
 }

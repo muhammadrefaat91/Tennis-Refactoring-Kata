@@ -1,7 +1,8 @@
-import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.ADVANTAGE_STRING;
 import static com.tennis.util.Constants.CURRENT_SCORE;
 import static com.tennis.util.Constants.DASH;
 import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.ENJOY_YOUR_GAME;
 import static com.tennis.util.Constants.FIFTEEN;
 import static com.tennis.util.Constants.FIFTEEN_ALL;
 import static com.tennis.util.Constants.FORTY;
@@ -26,22 +27,18 @@ public class TennisGame7 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_1))
+        if (playerName.equals(PLAYER_1)) {
             player1Score++;
-        else
+        } else {
             player2Score++;
-
+        }
     }
 
-    public String getScore()
-    {
+    public String getScore() {
         String result = CURRENT_SCORE;
-
-        if (player1Score == player2Score)
-        {
+        if (player1Score == player2Score) {
             // tie score
-            switch (player1Score)
-            {
+            switch (player1Score) {
                 case 0:
                     result += LOVE_ALL;
                     break;
@@ -55,41 +52,33 @@ public class TennisGame7 implements TennisGame {
                     result += DEUCE;
                     break;
             }
-        }
-        else if (player1Score >= 4 || player2Score >= 4)
-        {
+        } else if (player1Score >= 4 || player2Score >= 4) {
             // end-game score
             if (player1Score - player2Score == 1) {
-                result += ADVANTAGE + player1Name;
+                result += ADVANTAGE_STRING + player1Name;
             } else if (player1Score - player2Score == -1) {
-                result += ADVANTAGE + player2Name;
+                result += ADVANTAGE_STRING + player2Name;
             } else if (player1Score - player2Score >= 2) {
                 result += WIN_FOR + player1Name;
             } else {
                 result += WIN_FOR + player2Name;
             }
-        }
-        else
-        {
+        } else {
             // regular score
-            result +=  switch (player1Score)
-            {
+            result +=  switch (player1Score) {
                 case 0 -> LOVE;
                 case 1 -> FIFTEEN;
                 case 2 -> THIRTY;
                 default -> FORTY;
             };
             result += DASH;
-            result +=  switch (player2Score)
-            {
+            result +=  switch (player2Score) {
                 case 0 -> LOVE;
                 case 1 -> FIFTEEN;
                 case 2 -> THIRTY;
                 default -> FORTY;
             };
-
         }
-
-        return result + ", enjoy your game!";
+        return result + ENJOY_YOUR_GAME;
     }
 }

@@ -40,12 +40,15 @@ public class TennisGame5 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals(PLAYER_1))
-            player1Score++;
-        else if (playerName.equals(PLAYER_2))
-            player2Score++;
-        else
+        if (!playerName.equals(player1Name) && !playerName.equals(player2Name)) {
             throw new IllegalArgumentException(INVALID_PLAYER_NAME);
+        }
+
+        if (playerName.equals(player1Name)) {
+            player1Score++;
+        } else if (playerName.equals(player2Name)) {
+            player2Score++;
+        }
     }
 
     @Override

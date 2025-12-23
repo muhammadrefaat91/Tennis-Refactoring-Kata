@@ -34,7 +34,8 @@ public final class Constants {
     public static final String FORTY_THIRTY = "Forty-Thirty";
     public static final String INVALID_SCORE = "Invalid score.";
     public static final String INVALID_PLAYER_NAME = "Invalid player name.";
-    public static final String ADVANTAGE = "Advantage ";
+    public static final String ADVANTAGE_STRING = "Advantage ";
     public static final String WIN_FOR = "Win for ";
+    public static final String ENJOY_YOUR_GAME = ", enjoy your game!";
 
 }

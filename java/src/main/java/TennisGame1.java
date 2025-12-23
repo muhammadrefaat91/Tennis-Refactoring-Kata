@@ -8,7 +8,6 @@ import static com.tennis.util.Constants.FIFTEEN_ALL;
 import static com.tennis.util.Constants.FORTY;
 import static com.tennis.util.Constants.LOVE;
 import static com.tennis.util.Constants.LOVE_ALL;
-import static com.tennis.util.Constants.PLAYER_1;
 import static com.tennis.util.Constants.THIRTY;
 import static com.tennis.util.Constants.THIRTY_ALL;
 import static com.tennis.util.Constants.WIN_FOR_PLAYER_1;
@@ -16,8 +15,8 @@ import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
 
 public class TennisGame1 implements TennisGame {
 
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private int player1Score = 0;
+    private int player2Score = 0;
     private String player1Name;
     private String player2Name;
 
@@ -27,65 +26,58 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == PLAYER_1)
-            m_score1 += 1;
-        else
-            m_score2 += 1;
+        if (playerName.equalsIgnoreCase(player1Name)) {
+            player1Score += 1;
+        } else {
+            player2Score += 1;
+        }
     }
 
     public String getScore() {
-        String score = EMPTY_STRING;
-        int tempScore=0;
-        if (m_score1==m_score2)
-        {
-            switch (m_score1)
-            {
-                case 0:
-                        score = LOVE_ALL;
-                    break;
-                case 1:
-                        score = FIFTEEN_ALL;
-                    break;
-                case 2:
-                        score = THIRTY_ALL;
-                    break;
-                default:
-                        score = DEUCE;
-                    break;
-                
+        StringBuilder finalScore = new StringBuilder(EMPTY_STRING);
+        if (player1Score == player2Score) {
+            finalScore = switch (player1Score) {
+                case 0 -> new StringBuilder(LOVE_ALL);
+                case 1 -> new StringBuilder(FIFTEEN_ALL);
+                case 2 -> new StringBuilder(THIRTY_ALL);
+                default -> new StringBuilder(DEUCE);
+            };
+        } else if (player1Score >= 4 || player2Score >= 4) {
+            int minusResult = player1Score - player2Score;
+            if (minusResult == 1) {
+                finalScore = new StringBuilder(ADVANTAGE_PLAYER_1);
+            } else if (minusResult == -1) {
+                finalScore = new StringBuilder(ADVANTAGE_PLAYER_2);
+            } else if (minusResult >= 2) {
+                finalScore = new StringBuilder(WIN_FOR_PLAYER_1);
+            } else {
+                finalScore = new StringBuilder(WIN_FOR_PLAYER_2);
             }
-        }
-        else if (m_score1>=4 || m_score2>=4)
-        {
-            int minusResult = m_score1-m_score2;
-            if (minusResult==1) score = ADVANTAGE_PLAYER_1;
-            else if (minusResult ==-1) score = ADVANTAGE_PLAYER_2;
-            else if (minusResult>=2) score = WIN_FOR_PLAYER_1;
-            else score = WIN_FOR_PLAYER_2;
-        }
-        else
-        {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+= DASH; tempScore = m_score2;}
-                switch(tempScore)
-                {
+        } else {
+            int tempScore = 0;
+            for (int i = 1; i < 3; i++) {
+                if (i == 1) {
+                    tempScore = player1Score;
+                } else {
+                    finalScore.append(DASH);
+                    tempScore = player2Score;
+                }
+                switch(tempScore) {
                     case 0:
-                        score+= LOVE;
+                        finalScore.append(LOVE);
                         break;
                     case 1:
-                        score+= FIFTEEN;
+                        finalScore.append(FIFTEEN);
                         break;
                     case 2:
-                        score+= THIRTY;
+                        finalScore.append(THIRTY);
                         break;
                     case 3:
-                        score+= FORTY;
+                        finalScore.append(FORTY);
                         break;
                 }
             }
         }
-        return score;
+        return finalScore.toString();
     }
 }
