@@ -14,6 +14,15 @@ import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import com.tennis.TennisGame;
+import com.tennis.TennisGame1;
+import com.tennis.TennisGame2;
+import com.tennis.TennisGame3;
+import com.tennis.TennisGame4;
+import com.tennis.TennisGame5;
+import com.tennis.TennisGame6;
+import com.tennis.TennisGame7;
+
 public class TennisTest {
 
     public static Stream<Object[]> getAllScores() {

@@ -1,3 +1,5 @@
+package com.tennis;
+
 import static com.tennis.util.Constants.ADVANTAGE_PLAYER_1;
 import static com.tennis.util.Constants.ADVANTAGE_PLAYER_2;
 import static com.tennis.util.Constants.DEUCE;
@@ -14,8 +16,6 @@ import static com.tennis.util.Constants.LOVE_ALL;
 import static com.tennis.util.Constants.LOVE_FIFTEEN;
 import static com.tennis.util.Constants.LOVE_FORTY;
 import static com.tennis.util.Constants.LOVE_THIRTY;
-import static com.tennis.util.Constants.PLAYER_1;
-import static com.tennis.util.Constants.PLAYER_2;
 import static com.tennis.util.Constants.THIRTY_ALL;
 import static com.tennis.util.Constants.THIRTY_FIFTEEN;
 import static com.tennis.util.Constants.THIRTY_FORTY;
