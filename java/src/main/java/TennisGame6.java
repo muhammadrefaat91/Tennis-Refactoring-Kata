@@ -1,3 +1,16 @@
+import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.DASH;
+import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.FIFTEEN;
+import static com.tennis.util.Constants.FIFTEEN_ALL;
+import static com.tennis.util.Constants.FORTY;
+import static com.tennis.util.Constants.LOVE;
+import static com.tennis.util.Constants.LOVE_ALL;
+import static com.tennis.util.Constants.PLAYER_1;
+import static com.tennis.util.Constants.THIRTY;
+import static com.tennis.util.Constants.THIRTY_ALL;
+import static com.tennis.util.Constants.WIN_FOR;
+
 public class TennisGame6 implements TennisGame {
     private final String player1Name;
     private final String player2Name;
@@ -11,7 +24,7 @@ public class TennisGame6 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals("player1"))
+        if (playerName.equals(PLAYER_1))
             player1Score++;
         else
             player2Score++;
@@ -29,16 +42,16 @@ public class TennisGame6 implements TennisGame {
             switch (player1Score)
             {
                 case 0:
-                    tieScore = "Love-All";
+                    tieScore = LOVE_ALL;
                     break;
                 case 1:
-                    tieScore = "Fifteen-All";
+                    tieScore = FIFTEEN_ALL;
                     break;
                 case 2:
-                    tieScore = "Thirty-All";
+                    tieScore = THIRTY_ALL;
                     break;
                 default:
-                    tieScore = "Deuce";
+                    tieScore = DEUCE;
                     break;
             }
 
@@ -50,13 +63,13 @@ public class TennisGame6 implements TennisGame {
             String endGameScore;
 
             if (player1Score - player2Score == 1) {
-                endGameScore = "Advantage " + player1Name;
+                endGameScore = ADVANTAGE + player1Name;
             } else if (player1Score - player2Score == -1) {
-                endGameScore = "Advantage " + player2Name;
+                endGameScore = ADVANTAGE + player2Name;
             } else if (player1Score - player2Score >= 2) {
-                endGameScore = "Win for " + player1Name;
+                endGameScore = WIN_FOR + player1Name;
             } else {
-                endGameScore = "Win for " + player2Name;
+                endGameScore = WIN_FOR + player2Name;
             }
 
             result = endGameScore;
@@ -68,21 +81,21 @@ public class TennisGame6 implements TennisGame {
 
             String score1 =  switch (player1Score)
             {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
+                case 0 -> LOVE;
+                case 1 -> FIFTEEN;
+                case 2 -> THIRTY;
+                default -> FORTY;
             };
 
             var score2 =  switch (player2Score)
             {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
+                case 0 -> LOVE;
+                case 1 -> FIFTEEN;
+                case 2 -> THIRTY;
+                default -> FORTY;
             };
 
-            regularScore = score1 + "-" + score2;
+            regularScore = score1 + DASH + score2;
 
             result = regularScore;
         }

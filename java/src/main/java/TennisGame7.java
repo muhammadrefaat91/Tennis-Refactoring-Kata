@@ -1,4 +1,19 @@
+import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.CURRENT_SCORE;
+import static com.tennis.util.Constants.DASH;
+import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.FIFTEEN;
+import static com.tennis.util.Constants.FIFTEEN_ALL;
+import static com.tennis.util.Constants.FORTY;
+import static com.tennis.util.Constants.LOVE;
+import static com.tennis.util.Constants.LOVE_ALL;
+import static com.tennis.util.Constants.PLAYER_1;
+import static com.tennis.util.Constants.THIRTY;
+import static com.tennis.util.Constants.THIRTY_ALL;
+import static com.tennis.util.Constants.WIN_FOR;
+
 public class TennisGame7 implements TennisGame {
+
     private final String player1Name;
     private final String player2Name;
     private int player1Score;
@@ -11,7 +26,7 @@ public class TennisGame7 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals("player1"))
+        if (playerName.equals(PLAYER_1))
             player1Score++;
         else
             player2Score++;
@@ -20,7 +35,7 @@ public class TennisGame7 implements TennisGame {
 
     public String getScore()
     {
-        String result = "Current score: ";
+        String result = CURRENT_SCORE;
 
         if (player1Score == player2Score)
         {
@@ -28,16 +43,16 @@ public class TennisGame7 implements TennisGame {
             switch (player1Score)
             {
                 case 0:
-                    result += "Love-All";
+                    result += LOVE_ALL;
                     break;
                 case 1:
-                    result += "Fifteen-All";
+                    result += FIFTEEN_ALL;
                     break;
                 case 2:
-                    result += "Thirty-All";
+                    result += THIRTY_ALL;
                     break;
                 default:
-                    result += "Deuce";
+                    result += DEUCE;
                     break;
             }
         }
@@ -45,13 +60,13 @@ public class TennisGame7 implements TennisGame {
         {
             // end-game score
             if (player1Score - player2Score == 1) {
-                result += "Advantage " + player1Name;
+                result += ADVANTAGE + player1Name;
             } else if (player1Score - player2Score == -1) {
-                result += "Advantage " + player2Name;
+                result += ADVANTAGE + player2Name;
             } else if (player1Score - player2Score >= 2) {
-                result += "Win for " + player1Name;
+                result += WIN_FOR + player1Name;
             } else {
-                result += "Win for " + player2Name;
+                result += WIN_FOR + player2Name;
             }
         }
         else
@@ -59,18 +74,18 @@ public class TennisGame7 implements TennisGame {
             // regular score
             result +=  switch (player1Score)
             {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
+                case 0 -> LOVE;
+                case 1 -> FIFTEEN;
+                case 2 -> THIRTY;
+                default -> FORTY;
             };
-            result += "-";
+            result += DASH;
             result +=  switch (player2Score)
             {
-                case 0 -> "Love";
-                case 1 -> "Fifteen";
-                case 2 -> "Thirty";
-                default -> "Forty";
+                case 0 -> LOVE;
+                case 1 -> FIFTEEN;
+                case 2 -> THIRTY;
+                default -> FORTY;
             };
 
         }

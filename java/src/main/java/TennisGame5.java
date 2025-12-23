@@ -1,3 +1,28 @@
+import static com.tennis.util.Constants.ADVANTAGE_PLAYER_1;
+import static com.tennis.util.Constants.ADVANTAGE_PLAYER_2;
+import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.FIFTEEN_ALL;
+import static com.tennis.util.Constants.FIFTEEN_FORTY;
+import static com.tennis.util.Constants.FIFTEEN_LOVE;
+import static com.tennis.util.Constants.FIFTEEN_THIRTY;
+import static com.tennis.util.Constants.FORTY_FIFTEEN;
+import static com.tennis.util.Constants.FORTY_LOVE;
+import static com.tennis.util.Constants.FORTY_THIRTY;
+import static com.tennis.util.Constants.INVALID_PLAYER_NAME;
+import static com.tennis.util.Constants.INVALID_SCORE;
+import static com.tennis.util.Constants.LOVE_ALL;
+import static com.tennis.util.Constants.LOVE_FIFTEEN;
+import static com.tennis.util.Constants.LOVE_FORTY;
+import static com.tennis.util.Constants.LOVE_THIRTY;
+import static com.tennis.util.Constants.PLAYER_1;
+import static com.tennis.util.Constants.PLAYER_2;
+import static com.tennis.util.Constants.THIRTY_ALL;
+import static com.tennis.util.Constants.THIRTY_FIFTEEN;
+import static com.tennis.util.Constants.THIRTY_FORTY;
+import static com.tennis.util.Constants.THIRTY_LOVE;
+import static com.tennis.util.Constants.WIN_FOR_PLAYER_1;
+import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +40,12 @@ public class TennisGame5 implements TennisGame {
 
     @Override
     public void wonPoint(String playerName) {
-        if (playerName.equals("player1"))
+        if (playerName.equals(PLAYER_1))
             player1Score++;
-        else if (playerName.equals("player2"))
+        else if (playerName.equals(PLAYER_2))
             player2Score++;
         else
-            throw new IllegalArgumentException("Invalid player name.");
+            throw new IllegalArgumentException(INVALID_PLAYER_NAME);
     }
 
     @Override
@@ -34,37 +59,37 @@ public class TennisGame5 implements TennisGame {
         }
 
         var lookup = new HashMap<Map.Entry, String>();
-        lookup.put(Map.entry(0, 0), "Love-All");
-        lookup.put(Map.entry(0, 1), "Love-Fifteen");
-        lookup.put(Map.entry(0, 2), "Love-Thirty");
-        lookup.put(Map.entry(0, 3), "Love-Forty");
-        lookup.put(Map.entry(0, 4), "Win for player2");
-        lookup.put(Map.entry(1, 0), "Fifteen-Love");
-        lookup.put(Map.entry(1, 1), "Fifteen-All");
-        lookup.put(Map.entry(1, 2), "Fifteen-Thirty");
-        lookup.put(Map.entry(1, 3), "Fifteen-Forty");
-        lookup.put(Map.entry(1, 4), "Win for player2");
-        lookup.put(Map.entry(2, 0), "Thirty-Love");
-        lookup.put(Map.entry(2, 1), "Thirty-Fifteen");
-        lookup.put(Map.entry(2, 2), "Thirty-All");
-        lookup.put(Map.entry(2, 3), "Thirty-Forty");
-        lookup.put(Map.entry(2, 4), "Win for player2");
-        lookup.put(Map.entry(3, 0), "Forty-Love");
-        lookup.put(Map.entry(3, 1), "Forty-Fifteen");
-        lookup.put(Map.entry(3, 2), "Forty-Thirty");
-        lookup.put(Map.entry(3, 3), "Deuce");
-        lookup.put(Map.entry(3, 4), "Advantage player2");
-        lookup.put(Map.entry(4, 0), "Win for player1");
-        lookup.put(Map.entry(4, 1), "Win for player1");
-        lookup.put(Map.entry(4, 2), "Win for player1");
-        lookup.put(Map.entry(4, 3), "Advantage player1");
-        lookup.put(Map.entry(4, 4), "Deuce");
+        lookup.put(Map.entry(0, 0), LOVE_ALL);
+        lookup.put(Map.entry(0, 1), LOVE_FIFTEEN);
+        lookup.put(Map.entry(0, 2), LOVE_THIRTY);
+        lookup.put(Map.entry(0, 3), LOVE_FORTY);
+        lookup.put(Map.entry(0, 4), WIN_FOR_PLAYER_2);
+        lookup.put(Map.entry(1, 0), FIFTEEN_LOVE);
+        lookup.put(Map.entry(1, 1), FIFTEEN_ALL);
+        lookup.put(Map.entry(1, 2), FIFTEEN_THIRTY);
+        lookup.put(Map.entry(1, 3), FIFTEEN_FORTY);
+        lookup.put(Map.entry(1, 4), WIN_FOR_PLAYER_2);
+        lookup.put(Map.entry(2, 0), THIRTY_LOVE);
+        lookup.put(Map.entry(2, 1), THIRTY_FIFTEEN);
+        lookup.put(Map.entry(2, 2), THIRTY_ALL);
+        lookup.put(Map.entry(2, 3), THIRTY_FORTY);
+        lookup.put(Map.entry(2, 4), WIN_FOR_PLAYER_2);
+        lookup.put(Map.entry(3, 0), FORTY_LOVE);
+        lookup.put(Map.entry(3, 1), FORTY_FIFTEEN);
+        lookup.put(Map.entry(3, 2), FORTY_THIRTY);
+        lookup.put(Map.entry(3, 3), DEUCE);
+        lookup.put(Map.entry(3, 4), ADVANTAGE_PLAYER_2);
+        lookup.put(Map.entry(4, 0), WIN_FOR_PLAYER_1);
+        lookup.put(Map.entry(4, 1), WIN_FOR_PLAYER_1);
+        lookup.put(Map.entry(4, 2), WIN_FOR_PLAYER_1);
+        lookup.put(Map.entry(4, 3), ADVANTAGE_PLAYER_1);
+        lookup.put(Map.entry(4, 4), DEUCE);
 
         var entry = Map.entry(p1, p2);
         if (lookup.containsKey(entry)) {
             return lookup.get(entry);
         } else {
-            throw new IllegalArgumentException("Invalid score.");
+            throw new IllegalArgumentException(INVALID_SCORE);
         }
     }
 }

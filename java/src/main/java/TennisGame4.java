@@ -1,3 +1,13 @@
+import static com.tennis.util.Constants.ADVANTAGE;
+import static com.tennis.util.Constants.DASH;
+import static com.tennis.util.Constants.DASH_ALL;
+import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.FIFTEEN;
+import static com.tennis.util.Constants.FORTY;
+import static com.tennis.util.Constants.LOVE;
+import static com.tennis.util.Constants.THIRTY;
+import static com.tennis.util.Constants.WIN_FOR;
+
 public class TennisGame4 implements TennisGame {
 
     int serverScore;
@@ -63,8 +73,8 @@ class TennisResult {
         if ("".equals(this.receiverScore))
             return this.serverScore;
         if (serverScore.equals(receiverScore))
-            return serverScore + "-All";
-        return this.serverScore + "-" + this.receiverScore;
+            return serverScore + DASH_ALL;
+        return this.serverScore + DASH + this.receiverScore;
     }
 }
 
@@ -84,7 +94,7 @@ class Deuce implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.isDeuce())
-            return new TennisResult("Deuce", "");
+            return new TennisResult(DEUCE, "");
         return this.nextResult.getResult();
     }
 }
@@ -101,7 +111,7 @@ class GameServer implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.serverHasWon())
-            return new TennisResult("Win for " + game.server, "");
+            return new TennisResult(WIN_FOR + game.server, "");
         return this.nextResult.getResult();
     }
 }
@@ -118,7 +128,7 @@ class GameReceiver implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.receiverHasWon())
-            return new TennisResult("Win for " + game.receiver, "");
+            return new TennisResult(WIN_FOR + game.receiver, "");
         return this.nextResult.getResult();
     }
 }
@@ -135,7 +145,7 @@ class AdvantageServer implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.serverHasAdvantage())
-            return new TennisResult("Advantage " + game.server, "");
+            return new TennisResult(ADVANTAGE + game.server, "");
         return this.nextResult.getResult();
     }
 }
@@ -153,14 +163,14 @@ class AdvantageReceiver implements ResultProvider {
     @Override
     public TennisResult getResult() {
         if (game.receiverHasAdvantage())
-            return new TennisResult("Advantage " + game.receiver, "");
+            return new TennisResult(ADVANTAGE + game.receiver, "");
         return this.nextResult.getResult();
     }
 }
 
 class DefaultResult implements ResultProvider {
 
-    private static final String[] scores = {"Love", "Fifteen", "Thirty", "Forty"};
+    private static final String[] scores = {LOVE, FIFTEEN, THIRTY, FORTY};
 
     private final TennisGame4 game;
 
