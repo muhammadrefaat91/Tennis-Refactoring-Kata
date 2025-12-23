@@ -24,13 +24,13 @@ public class TennisGame7 implements TennisGame {
     }
 
     public String getScore() {
-        String result = CURRENT_SCORE;
+        StringBuilder result = new StringBuilder(CURRENT_SCORE);
         if (player1.getScore().equals(player2.getScore())) {
-            result+= getTieScore(player1.getScore());
+            result.append(getTieScore(player1.getScore()));
         } else if (player1.getScore() >= 4 || player2.getScore() >= 4) {
-            result+= getEndGameScore(player1.getScore(), player2.getScore(), player1.getName(), player2.getName());
+            result.append(getEndGameScore(player1.getScore(), player2.getScore(), player1.getName(), player2.getName()));
         } else {
-            result +=  getRegularScore(player1.getScore(), player2.getScore());
+            result.append(getRegularScore(player1.getScore(), player2.getScore()));
         }
         return result + ENJOY_YOUR_GAME;
     }

@@ -4,6 +4,7 @@ import static com.tennis.util.Constants.ADVANTAGE_STRING;
 import static com.tennis.util.Constants.DASH;
 import static com.tennis.util.Constants.DASH_ALL;
 import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.util.Constants.EMPTY_STRING;
 import static com.tennis.util.Constants.FIFTEEN;
 import static com.tennis.util.Constants.FORTY;
 import static com.tennis.util.Constants.LOVE;
@@ -25,14 +26,14 @@ public class TennisGame3 implements TennisGame {
 
     public String getScore() {
         String[] scoreDesc = new String[]{LOVE, FIFTEEN, THIRTY, FORTY};
-        String result;
+        StringBuilder result = new StringBuilder(EMPTY_STRING);
         if (player1.getScore() < 4 && player2.getScore() < 4 && !(player1.getScore() + player2.getScore() == 6)) {
-            result = scoreDesc[player1.getScore()];
+            result.append(scoreDesc[player1.getScore()]);
             return (player1.getScore().equals(player2.getScore())) ? result + DASH_ALL : result + DASH + scoreDesc[player2.getScore()];
         } else {
             if (player1.getScore().equals(player2.getScore()))
                 return DEUCE;
-            result = player1.getScore() > player2.getScore() ? player1.getName() : player2.getName();
+            result.append(player1.getScore() > player2.getScore() ? player1.getName() : player2.getName());
             return ((player1.getScore() - player2.getScore()) * (player1.getScore() - player2.getScore()) == 1) ? ADVANTAGE_STRING + result : WIN_FOR + result;
         }
     }
