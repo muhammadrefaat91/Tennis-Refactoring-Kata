@@ -1,12 +1,12 @@
 package com.tennis;
 
-import static com.tennis.util.Constants.EMPTY_STRING;
-import static com.tennis.util.TennisGameCommonUtil.getEndGameScore;
-import static com.tennis.util.TennisGameCommonUtil.getRegularScore;
-import static com.tennis.util.TennisGameCommonUtil.getTieScore;
+import static com.tennis.common.Constants.EMPTY_STRING;
+import static com.tennis.common.TennisGameCommonUtil.getEndGameScore;
+import static com.tennis.common.TennisGameCommonUtil.getRegularScore;
+import static com.tennis.common.TennisGameCommonUtil.getTieScore;
 
 import com.tennis.model.Player;
-import com.tennis.util.TennisGameCommonUtil;
+import com.tennis.common.TennisGameCommonUtil;
 
 public class TennisGame1 implements TennisGame {
 

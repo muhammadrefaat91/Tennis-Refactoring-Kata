@@ -1,6 +1,6 @@
 package com.tennis.core;
 
-import static com.tennis.util.Constants.ADVANTAGE_STRING;
+import static com.tennis.common.Constants.ADVANTAGE_STRING;
 
 import com.tennis.TennisGame4;
 

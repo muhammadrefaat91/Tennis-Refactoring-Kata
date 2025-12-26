@@ -1,32 +1,32 @@
 package com.tennis;
 
-import static com.tennis.util.Constants.ADVANTAGE_PLAYER_1;
-import static com.tennis.util.Constants.ADVANTAGE_PLAYER_2;
-import static com.tennis.util.Constants.DEUCE;
-import static com.tennis.util.Constants.FIFTEEN_ALL;
-import static com.tennis.util.Constants.FIFTEEN_FORTY;
-import static com.tennis.util.Constants.FIFTEEN_LOVE;
-import static com.tennis.util.Constants.FIFTEEN_THIRTY;
-import static com.tennis.util.Constants.FORTY_FIFTEEN;
-import static com.tennis.util.Constants.FORTY_LOVE;
-import static com.tennis.util.Constants.FORTY_THIRTY;
-import static com.tennis.util.Constants.INVALID_SCORE;
-import static com.tennis.util.Constants.LOVE_ALL;
-import static com.tennis.util.Constants.LOVE_FIFTEEN;
-import static com.tennis.util.Constants.LOVE_FORTY;
-import static com.tennis.util.Constants.LOVE_THIRTY;
-import static com.tennis.util.Constants.THIRTY_ALL;
-import static com.tennis.util.Constants.THIRTY_FIFTEEN;
-import static com.tennis.util.Constants.THIRTY_FORTY;
-import static com.tennis.util.Constants.THIRTY_LOVE;
-import static com.tennis.util.Constants.WIN_FOR_PLAYER_1;
-import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
+import static com.tennis.common.Constants.ADVANTAGE_PLAYER_1;
+import static com.tennis.common.Constants.ADVANTAGE_PLAYER_2;
+import static com.tennis.common.Constants.DEUCE;
+import static com.tennis.common.Constants.FIFTEEN_ALL;
+import static com.tennis.common.Constants.FIFTEEN_FORTY;
+import static com.tennis.common.Constants.FIFTEEN_LOVE;
+import static com.tennis.common.Constants.FIFTEEN_THIRTY;
+import static com.tennis.common.Constants.FORTY_FIFTEEN;
+import static com.tennis.common.Constants.FORTY_LOVE;
+import static com.tennis.common.Constants.FORTY_THIRTY;
+import static com.tennis.common.Constants.INVALID_SCORE;
+import static com.tennis.common.Constants.LOVE_ALL;
+import static com.tennis.common.Constants.LOVE_FIFTEEN;
+import static com.tennis.common.Constants.LOVE_FORTY;
+import static com.tennis.common.Constants.LOVE_THIRTY;
+import static com.tennis.common.Constants.THIRTY_ALL;
+import static com.tennis.common.Constants.THIRTY_FIFTEEN;
+import static com.tennis.common.Constants.THIRTY_FORTY;
+import static com.tennis.common.Constants.THIRTY_LOVE;
+import static com.tennis.common.Constants.WIN_FOR_PLAYER_1;
+import static com.tennis.common.Constants.WIN_FOR_PLAYER_2;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.tennis.model.Player;
-import com.tennis.util.TennisGameCommonUtil;
+import com.tennis.common.TennisGameCommonUtil;
 
 public class TennisGame5 implements TennisGame {
 

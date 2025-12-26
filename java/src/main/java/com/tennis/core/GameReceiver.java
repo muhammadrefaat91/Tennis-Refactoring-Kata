@@ -1,6 +1,6 @@
 package com.tennis.core;
 
-import static com.tennis.util.Constants.WIN_FOR;
+import static com.tennis.common.Constants.WIN_FOR;
 
 import com.tennis.TennisGame4;
 

@@ -1,8 +1,8 @@
 package com.tennis.core;
 
-import static com.tennis.util.Constants.DASH;
-import static com.tennis.util.Constants.DASH_ALL;
-import static com.tennis.util.Constants.EMPTY_STRING;
+import static com.tennis.common.Constants.DASH;
+import static com.tennis.common.Constants.DASH_ALL;
+import static com.tennis.common.Constants.EMPTY_STRING;
 
 public class TennisResult {
 

@@ -1,12 +1,12 @@
 package com.tennis;
 
-import static com.tennis.util.Constants.CURRENT_SCORE;
-import static com.tennis.util.Constants.ENJOY_YOUR_GAME;
-import static com.tennis.util.TennisGameCommonUtil.getEndGameScore;
-import static com.tennis.util.TennisGameCommonUtil.getRegularScore;
-import static com.tennis.util.TennisGameCommonUtil.getTieScore;
+import static com.tennis.common.Constants.CURRENT_SCORE;
+import static com.tennis.common.Constants.ENJOY_YOUR_GAME;
+import static com.tennis.common.TennisGameCommonUtil.getEndGameScore;
+import static com.tennis.common.TennisGameCommonUtil.getRegularScore;
+import static com.tennis.common.TennisGameCommonUtil.getTieScore;
 import com.tennis.model.Player;
-import com.tennis.util.TennisGameCommonUtil;
+import com.tennis.common.TennisGameCommonUtil;
 
 public class TennisGame7 implements TennisGame {
 

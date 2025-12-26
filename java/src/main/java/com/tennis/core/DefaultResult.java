@@ -1,9 +1,9 @@
 package com.tennis.core;
 
-import static com.tennis.util.Constants.FIFTEEN;
-import static com.tennis.util.Constants.FORTY;
-import static com.tennis.util.Constants.LOVE;
-import static com.tennis.util.Constants.THIRTY;
+import static com.tennis.common.Constants.FIFTEEN;
+import static com.tennis.common.Constants.FORTY;
+import static com.tennis.common.Constants.LOVE;
+import static com.tennis.common.Constants.THIRTY;
 
 import com.tennis.TennisGame4;
 

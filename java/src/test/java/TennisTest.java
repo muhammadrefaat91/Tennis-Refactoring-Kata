@@ -2,15 +2,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.stream.Stream;
 
-import static com.tennis.util.Constants.ADVANTAGE_PLAYER_1;
-import static com.tennis.util.Constants.ADVANTAGE_PLAYER_2;
-import static com.tennis.util.Constants.DEUCE;
-import static com.tennis.util.Constants.FIFTEEN_ALL;
-import static com.tennis.util.Constants.LOVE_ALL;
-import static com.tennis.util.Constants.PLAYER_1;
-import static com.tennis.util.Constants.THIRTY_ALL;
-import static com.tennis.util.Constants.WIN_FOR_PLAYER_1;
-import static com.tennis.util.Constants.WIN_FOR_PLAYER_2;
+import static com.tennis.common.Constants.ADVANTAGE_PLAYER_1;
+import static com.tennis.common.Constants.ADVANTAGE_PLAYER_2;
+import static com.tennis.common.Constants.DEUCE;
+import static com.tennis.common.Constants.FIFTEEN_ALL;
+import static com.tennis.common.Constants.LOVE_ALL;
+import static com.tennis.common.Constants.PLAYER_1;
+import static com.tennis.common.Constants.THIRTY_ALL;
+import static com.tennis.common.Constants.WIN_FOR_PLAYER_1;
+import static com.tennis.common.Constants.WIN_FOR_PLAYER_2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.provider.MethodSource;
 

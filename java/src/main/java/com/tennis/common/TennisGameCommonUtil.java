@@ -1,18 +1,18 @@
-package com.tennis.util;
+package com.tennis.common;
 
-import static com.tennis.util.Constants.ADVANTAGE_STRING;
-import static com.tennis.util.Constants.DASH;
-import static com.tennis.util.Constants.DEUCE;
-import static com.tennis.util.Constants.EMPTY_STRING;
-import static com.tennis.util.Constants.FIFTEEN;
-import static com.tennis.util.Constants.FIFTEEN_ALL;
-import static com.tennis.util.Constants.FORTY;
-import static com.tennis.util.Constants.INVALID_PLAYER_NAME;
-import static com.tennis.util.Constants.LOVE;
-import static com.tennis.util.Constants.LOVE_ALL;
-import static com.tennis.util.Constants.THIRTY;
-import static com.tennis.util.Constants.THIRTY_ALL;
-import static com.tennis.util.Constants.WIN_FOR;
+import static com.tennis.common.Constants.ADVANTAGE_STRING;
+import static com.tennis.common.Constants.DASH;
+import static com.tennis.common.Constants.DEUCE;
+import static com.tennis.common.Constants.EMPTY_STRING;
+import static com.tennis.common.Constants.FIFTEEN;
+import static com.tennis.common.Constants.FIFTEEN_ALL;
+import static com.tennis.common.Constants.FORTY;
+import static com.tennis.common.Constants.INVALID_PLAYER_NAME;
+import static com.tennis.common.Constants.LOVE;
+import static com.tennis.common.Constants.LOVE_ALL;
+import static com.tennis.common.Constants.THIRTY;
+import static com.tennis.common.Constants.THIRTY_ALL;
+import static com.tennis.common.Constants.WIN_FOR;
 
 import com.tennis.model.Player;
 
@@ -68,12 +68,12 @@ public class TennisGameCommonUtil {
     }
 
     public static String getRegularScore(Integer player1Score, Integer player2Score) {
-        var score1 =  mapScoreResult(player1Score);
-        var score2 =  mapScoreResult(player2Score);
+        var score1 =  getScoreLabel(player1Score);
+        var score2 =  getScoreLabel(player2Score);
         return score1 + DASH + score2;
     }
 
-    public static String mapScoreResult(Integer playerScore) {
+    public static String getScoreLabel(Integer playerScore) {
         return switch (playerScore) {
             case 0 -> LOVE;
             case 1 -> FIFTEEN;

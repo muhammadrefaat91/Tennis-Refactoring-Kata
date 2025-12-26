@@ -1,18 +1,18 @@
 package com.tennis;
 
-import static com.tennis.util.Constants.ADVANTAGE_STRING;
-import static com.tennis.util.Constants.DASH;
-import static com.tennis.util.Constants.DASH_ALL;
-import static com.tennis.util.Constants.DEUCE;
-import static com.tennis.util.Constants.EMPTY_STRING;
-import static com.tennis.util.Constants.FIFTEEN;
-import static com.tennis.util.Constants.FORTY;
-import static com.tennis.util.Constants.LOVE;
-import static com.tennis.util.Constants.THIRTY;
-import static com.tennis.util.Constants.WIN_FOR;
+import static com.tennis.common.Constants.ADVANTAGE_STRING;
+import static com.tennis.common.Constants.DASH;
+import static com.tennis.common.Constants.DASH_ALL;
+import static com.tennis.common.Constants.DEUCE;
+import static com.tennis.common.Constants.EMPTY_STRING;
+import static com.tennis.common.Constants.FIFTEEN;
+import static com.tennis.common.Constants.FORTY;
+import static com.tennis.common.Constants.LOVE;
+import static com.tennis.common.Constants.THIRTY;
+import static com.tennis.common.Constants.WIN_FOR;
 
 import com.tennis.model.Player;
-import com.tennis.util.TennisGameCommonUtil;
+import com.tennis.common.TennisGameCommonUtil;
 
 public class TennisGame3 implements TennisGame {
 

@@ -1,6 +1,6 @@
 package com.tennis.core;
 
-import static com.tennis.util.Constants.DEUCE;
+import static com.tennis.common.Constants.DEUCE;
 
 import com.tennis.TennisGame4;
 

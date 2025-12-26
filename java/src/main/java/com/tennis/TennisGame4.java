@@ -8,7 +8,7 @@ import com.tennis.core.GameReceiver;
 import com.tennis.core.GameServer;
 import com.tennis.core.TennisResult;
 import com.tennis.model.Player;
-import com.tennis.util.TennisGameCommonUtil;
+import com.tennis.common.TennisGameCommonUtil;
 
 public class TennisGame4 implements TennisGame {
 

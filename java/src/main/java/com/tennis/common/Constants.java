@@ -1,4 +1,4 @@
-package com.tennis.util;
+package com.tennis.common;
 
 public final class Constants {
 
